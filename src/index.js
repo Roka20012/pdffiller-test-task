@@ -1,4 +1,3 @@
-//height = windowHeight / lines.lenght
 let params = {
     lines: [
         {
@@ -7,7 +6,7 @@ let params = {
             elements: [
                 {
                     background: "blue",
-                    width: 25
+                    width: 35
                 },
                 {
                     background: "orange",
@@ -43,7 +42,7 @@ let params = {
             elements: [
                 {
                     background: "yellow",
-                    width: 25
+                    width: 30
                 },
                 {
                     background: "yellow",
@@ -62,11 +61,8 @@ const addLines = props => {
     let height = pageHeight / props.lines.length;
 
     lines.forEach((line, i) => {
-        document.body.innerHTML += `<div class="line line-${i +
-            1}" style="width: 100%; 
-        height: ${height}px; background-color: ${
-            line.background
-        }; display: flex;"></div>`;
+        document.body.innerHTML += `<div class="line line-${i + 1}" style="width: 100%; 
+        height: ${height}px; background-color: ${line.background}; display: flex;"></div>`;
     });
 
     addElements(lines, height);
@@ -82,7 +78,9 @@ const changeLinesAndElementsColor = props => {
             el.style.backgroundColor = generateColor();
         }, props.lines[i].updateTime);
 
-        let lineElements = [...document.querySelectorAll(`.line-${i + 1} > .element`)];
+        let lineElements = [
+            ...document.querySelectorAll(`.line-${i + 1} > .element`)
+        ];
 
         lineElements.forEach(el => {
             setInterval(() => {
@@ -107,7 +105,7 @@ const addElements = (lines, height) => {
 const generateColor = _ => {
     const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
 
-    let rgb = [getRandomInt(256), getRandomInt(256), getRandomInt(256)];//0-255
+    let rgb = [getRandomInt(256), getRandomInt(256), getRandomInt(256)]; //0-255
     return `rgb(${rgb.join()})`;
 };
 
